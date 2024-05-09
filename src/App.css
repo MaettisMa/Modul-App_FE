@@ -1,16 +1,110 @@
 .App {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 12fr 1fr;
+  grid-template-rows: 70px 100px 15% 75%;
+}
+
+.Header {
+  grid-column: 2/2;
+  grid-row: 1/1;
+  vertical-align: middle;
+  border: solid orange;
+  border-width: 0px 0px 4px 0px;
+}
+
+.MenuWrapper {
+  grid-column: 2/2;
+  grid-row: 2/2;
+  display: grid;
+  grid-template-columns: 3fr 2fr 3fr;
+  border: solid orange;
+  border-width: 0px 0px 4px 0px;
+}
+
+.SelectionWrapper {
+  grid-column: 1/1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.SelectDegree {
+  grid-column: 1/1;
+  position: relative;
+  top: 40%;
+  margin-right: 20px;
+}
+
+.SelectDegreeButton {
+  grid-column: 2/2;
+}
+
+.SelectModule {
+  grid-column: 3/3;
+  position: relative;
+  top: 40%;
+}
+
+.DegreeSelection {
+  grid-column: 2/2;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ModuleSelection {
+  grid-column: 3/3;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.DataWrapper {
+  grid-column: 2/2;
+  grid-row: 3/3;
+  display: grid;
+  grid-template-rows: 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr;
+  border: solid orange;
+  border-width: 0px 0px 4px 0px;
+  min-height: 300px;
+  padding: 20px;
+}
+
+.InputModuleName {
+  grid-row: 1/1;
+}
+
+.InputModuleNumber {
+  grid-row: 2/2;
+}
+
+.InputModuleType {
+  grid-row: 3/3;
+}
+
+.ModuleEcts {
+  grid-row: 4/4;
+}
+
+.ModuleSws {
+  grid-row: 5/5;
+}
+
+.ModuleExam {
+  grid-row: 6/6;
+}
+
+.SaveButton {
+  grid-row: 7/7;
+  margin-top: 5px;
+}
+
+.ModuleInput {
+  width: 400px;
 }
 
 .App-header {
@@ -24,15 +118,4 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
