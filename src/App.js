@@ -11,6 +11,7 @@ import './App.css';
 
 const App = () => {
   
+  // data variables
   const [degrees, setDegrees] = useState(['Wähle einen Studiengang']);
   const [chosenDegree, setChosenDegree] = useState('');
   const [chosenDegreeData, setChosenDegreeData] = useState();
