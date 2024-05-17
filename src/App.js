@@ -45,7 +45,12 @@ const App = () => {
     putRequest(chosenModuleIndex, chosenModuleData, chosenDegree);
     const data = updateDegreeData(chosenModuleIndex, chosenModuleData, chosenDegreeData)
     setChosenDegreeData(data);
+    console.log(chosenDegreeData)
   };
+
+  const handleSubmitForDelete = (event) => {
+
+  }
   
   return (
     <div className="App">
@@ -79,7 +84,8 @@ const App = () => {
           <ModulManipulator 
             chosenModuleData={chosenModuleData} 
             handleSubmitForSave={handleSubmitForSave}
-            setChosenModuleData={setChosenModuleData}/>
+            setChosenModuleData={setChosenModuleData}
+            handleSubmitForDelete={handleSubmitForDelete}/>
         }
       </div>
     </div>

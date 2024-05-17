@@ -1,6 +1,11 @@
 import './App.css';
 
-const ModulManipulator = ({chosenModuleData, handleSubmitForSave, setChosenModuleData}) => {
+const ModulManipulator = ({
+                chosenModuleData, 
+                handleSubmitForSave, 
+                setChosenModuleData,
+                handleSubmitForDelete
+            }) => {
     
     const setModuleName = (data) => {
         setChosenModuleData({
@@ -94,10 +99,16 @@ const ModulManipulator = ({chosenModuleData, handleSubmitForSave, setChosenModul
                     onChange={event => setModuleExam(event.target.value)}>
                 </input>
             </div>
-            <div className='SaveButton'>
-                <button 
+            <div className='ButtonWrapper'>
+                <button
+                    className='SaveButton' 
                     onClick={event => handleSubmitForSave(event.target.value)}>
                         Speichern
+                </button>
+                <button
+                    className='DeleteButton'
+                    onClick={event => handleSubmitForDelete(event.target.value)}>
+                        Delete
                 </button>
             </div>        
         </>
