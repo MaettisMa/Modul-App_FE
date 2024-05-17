@@ -3,7 +3,9 @@ import { fetchData,
          extractChosenModulData, 
          getModuleIndex, 
          putRequest,
-         updateDegreeData } from './utils';
+         deleteRequest,
+         updateDegreeData,
+         deleteModule } from './utils';
 import DegreeSelector from './DegreeSelector';
 import ModulSelector from './ModulSelector';
 import ModulManipulator from './ModulManipulator';
@@ -49,7 +51,12 @@ const App = () => {
   };
 
   const handleSubmitForDelete = (event) => {
-
+    console.log(chosenDegreeData);
+    deleteRequest(chosenModuleIndex, chosenDegree);
+    const data = deleteModule(chosenModuleIndex, chosenDegreeData);
+    setChosenDegreeData(data);
+    console.log(chosenDegreeData);
+    console.log(chosenModuleData);
   }
   
   return (

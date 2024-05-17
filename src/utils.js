@@ -31,6 +31,17 @@ export const putRequest = async(index, updatedModule, path) => {
     });
 }
 
+export const deleteRequest = async(index, path) => {
+    const responseDelete = await fetch(`http://127.0.0.1:5000/${path}?id=${index}`,{
+        method: 'Delete',
+    });
+}
+
+export const deleteModule = (index, degreeModules) => {
+    degreeModules.splice(index, index);
+    return degreeModules;
+}
+
 export const updateDegreeData = (index, 
                                  updatedModule, 
                                  degreeModules) => {
