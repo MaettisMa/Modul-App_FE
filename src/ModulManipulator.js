@@ -102,12 +102,12 @@ const ModulManipulator = ({
             <div className='ButtonWrapper'>
                 <button
                     className='SaveButton' 
-                    onClick={event => handleSubmitForSave(event.target.value)}>
+                    onClick={event => handleSubmitForSave()}>
                         Speichern
                 </button>
                 <button
                     className='DeleteButton'
-                    onClick={event => handleSubmitForDelete(event.target.value)}>
+                    onClick={event => handleSubmitForDelete()}>
                         Delete
                 </button>
             </div>        

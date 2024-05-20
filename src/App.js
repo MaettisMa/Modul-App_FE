@@ -43,20 +43,17 @@ const App = () => {
     setShowModulManipulator(true);
   };
 
-  const handleSubmitForSave = (submittedData) => {
+  const handleSubmitForSave = () => {
     putRequest(chosenModuleIndex, chosenModuleData, chosenDegree);
     const data = updateDegreeData(chosenModuleIndex, chosenModuleData, chosenDegreeData)
     setChosenDegreeData(data);
-    console.log(chosenDegreeData)
   };
 
-  const handleSubmitForDelete = (event) => {
-    console.log(chosenDegreeData);
+  const handleSubmitForDelete = () => {
     deleteRequest(chosenModuleIndex, chosenDegree);
     const data = deleteModule(chosenModuleIndex, chosenDegreeData);
     setChosenDegreeData(data);
-    console.log(chosenDegreeData);
-    console.log(chosenModuleData);
+    setChosenModuleData(chosenDegreeData[chosenModuleIndex]);
   }
   
   return (

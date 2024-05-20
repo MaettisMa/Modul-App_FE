@@ -38,7 +38,7 @@ export const deleteRequest = async(index, path) => {
 }
 
 export const deleteModule = (index, degreeModules) => {
-    degreeModules.splice(index, index);
+    degreeModules.splice(index, 1);
     return degreeModules;
 }
 
