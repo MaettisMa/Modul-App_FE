@@ -98,9 +98,23 @@
   grid-row: 6/6;
 }
 
-.SaveButton {
+.ButtonWrapper {
   grid-row: 7/7;
+  display: grid;
+  grid-template-columns: 1fr 1fr 8fr;
+  margin-top: 10px;
+}
+
+.SaveButton {
   margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 20px;
+}
+
+.DeleteButton {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 20px;
 }
 
 .ModuleInput {

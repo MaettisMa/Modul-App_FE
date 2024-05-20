@@ -3,7 +3,9 @@ import { fetchData,
          extractChosenModulData, 
          getModuleIndex, 
          putRequest,
-         updateDegreeData } from './utils';
+         deleteRequest,
+         updateDegreeData,
+         deleteModule } from './utils';
 import DegreeSelector from './DegreeSelector';
 import ModulSelector from './ModulSelector';
 import ModulManipulator from './ModulManipulator';
@@ -41,11 +43,18 @@ const App = () => {
     setShowModulManipulator(true);
   };
 
-  const handleSubmitForSave = (submittedData) => {
+  const handleSubmitForSave = () => {
     putRequest(chosenModuleIndex, chosenModuleData, chosenDegree);
     const data = updateDegreeData(chosenModuleIndex, chosenModuleData, chosenDegreeData)
     setChosenDegreeData(data);
   };
+
+  const handleSubmitForDelete = () => {
+    deleteRequest(chosenModuleIndex, chosenDegree);
+    const data = deleteModule(chosenModuleIndex, chosenDegreeData);
+    setChosenDegreeData(data);
+    setChosenModuleData(chosenDegreeData[chosenModuleIndex]);
+  }
   
   return (
     <div className="App">
@@ -79,7 +88,8 @@ const App = () => {
           <ModulManipulator 
             chosenModuleData={chosenModuleData} 
             handleSubmitForSave={handleSubmitForSave}
-            setChosenModuleData={setChosenModuleData}/>
+            setChosenModuleData={setChosenModuleData}
+            handleSubmitForDelete={handleSubmitForDelete}/>
         }
       </div>
     </div>
