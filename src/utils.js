@@ -24,22 +24,36 @@ export const getModuleIndex = (chosenModul, chosenDegree) => {
 }
 
 export const putRequest = async(index, updatedModule, path) => {
-    const responsePost = await fetch(`http://127.0.0.1:5000/${path}?id=${index}`,{
-        method: 'Post',
+    await fetch(`http://127.0.0.1:5000/${path}?id=${index}`,{
+        method: 'Put',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(updatedModule)
     });
 }
 
 export const deleteRequest = async(index, path) => {
-    const responseDelete = await fetch(`http://127.0.0.1:5000/${path}?id=${index}`,{
+    await fetch(`http://127.0.0.1:5000/${path}?id=${index}`,{
         method: 'Delete',
+    });
+}
+
+export const postRequest = async(path, newModule) => {
+    await fetch(`http://127.0.0.1:5000/${path}`,{
+        method: 'Post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newModule)
     });
 }
 
 export const deleteModule = (index, degreeModules) => {
     degreeModules.splice(index, 1);
     return degreeModules;
+}
+
+export const appendNewModule = (moduleData, degreeModules) => {
+    let array = degreeModules;
+    array.push(moduleData);
+    return array;
 }
 
 export const updateDegreeData = (index, 
