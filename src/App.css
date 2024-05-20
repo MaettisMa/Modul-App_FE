@@ -101,17 +101,11 @@
 .ButtonWrapper {
   grid-row: 7/7;
   display: grid;
-  grid-template-columns: 1fr 1fr 8fr;
+  grid-template-columns: 1fr 1fr 1fr 7fr;
   margin-top: 10px;
 }
 
-.SaveButton {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 20px;
-}
-
-.DeleteButton {
+.Button {
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 20px;

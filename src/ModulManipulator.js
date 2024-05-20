@@ -4,7 +4,10 @@ const ModulManipulator = ({
                 chosenModuleData, 
                 handleSubmitForSave, 
                 setChosenModuleData,
-                handleSubmitForDelete
+                handleSubmitForDelete,
+                handleSubmitForNewModule,
+                showButtonModuleManipulator,
+                handleSubmitSaveNewModule
             }) => {
     
     const setModuleName = (data) => {
@@ -99,18 +102,34 @@ const ModulManipulator = ({
                     onChange={event => setModuleExam(event.target.value)}>
                 </input>
             </div>
-            <div className='ButtonWrapper'>
-                <button
-                    className='SaveButton' 
-                    onClick={event => handleSubmitForSave()}>
-                        Speichern
-                </button>
-                <button
-                    className='DeleteButton'
-                    onClick={event => handleSubmitForDelete()}>
-                        Delete
-                </button>
-            </div>        
+            {showButtonModuleManipulator === true &&
+                <div className='ButtonWrapper'>
+                    <button
+                        className='Button' 
+                        onClick={event => handleSubmitForSave()}>
+                            Speichern
+                    </button>
+                    <button
+                        className='Button'
+                        onClick={event => handleSubmitForDelete()}>
+                            Löschen
+                    </button>
+                    <button
+                        className='Button'
+                        onClick={event => handleSubmitForNewModule()}>
+                            Neu
+                    </button>
+                </div>
+            }
+            {showButtonModuleManipulator === false &&
+                <div className='ButtonWrapper'>
+                    <button
+                        className='Button'
+                        onClick={event => handleSubmitSaveNewModule()}>
+                            Speichern        
+                    </button>
+                </div>
+            }        
         </>
     );
 }

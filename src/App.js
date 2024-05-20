@@ -5,7 +5,9 @@ import { fetchData,
          putRequest,
          deleteRequest,
          updateDegreeData,
-         deleteModule } from './utils';
+         deleteModule,
+         appendNewModule,
+         postRequest } from './utils';
 import DegreeSelector from './DegreeSelector';
 import ModulSelector from './ModulSelector';
 import ModulManipulator from './ModulManipulator';
@@ -20,6 +22,7 @@ const App = () => {
   const [chosenModuleData, setChosenModuleData] = useState();
   const [chosenModuleIndex, setChosenModuleIndex] = useState();
   const [showModulManipulator, setShowModulManipulator] = useState(false);
+  const [showButtonModuleManipulator, setShowButtonModuleManipulator] = useState(true);
   
   useEffect(() =>{
     const getDegree = async() =>{
@@ -41,11 +44,16 @@ const App = () => {
     const index = getModuleIndex(module, chosenDegreeData);
     setChosenModuleIndex(index);
     setShowModulManipulator(true);
+    setShowButtonModuleManipulator(true);
   };
 
   const handleSubmitForSave = () => {
     putRequest(chosenModuleIndex, chosenModuleData, chosenDegree);
-    const data = updateDegreeData(chosenModuleIndex, chosenModuleData, chosenDegreeData)
+    const data = updateDegreeData(
+                      chosenModuleIndex, 
+                      chosenModuleData, 
+                      chosenDegreeData
+                  )
     setChosenDegreeData(data);
   };
 
@@ -53,9 +61,33 @@ const App = () => {
     deleteRequest(chosenModuleIndex, chosenDegree);
     const data = deleteModule(chosenModuleIndex, chosenDegreeData);
     setChosenDegreeData(data);
-    setChosenModuleData(chosenDegreeData[chosenModuleIndex]);
+    setChosenModuleData(
+      chosenDegreeData[chosenModuleIndex % chosenDegreeData.length]
+    );
   }
   
+  const handleSubmitForNewModule = () => {
+    setChosenModuleData({
+      Art: "",
+      ECTS: "",
+      Modul: "",
+      Modulnummer: "",
+      Prüfungsleistung: "",
+      SWS: ""
+    })
+    setShowButtonModuleManipulator(false)
+  }
+  
+  const handleSubmitSaveNewModule = () => {
+    console.log(chosenModuleData)
+    postRequest(chosenDegree, chosenModuleData );
+    const data = appendNewModule(chosenModuleData, chosenDegreeData);
+    setChosenDegreeData(data);
+    setShowButtonModuleManipulator(true);
+    setChosenModuleData(chosenDegreeData[chosenDegreeData.length - 1]);
+    setChosenModuleIndex(chosenDegreeData.length)
+  }
+
   return (
     <div className="App">
       <header className='Header'>
@@ -89,7 +121,10 @@ const App = () => {
             chosenModuleData={chosenModuleData} 
             handleSubmitForSave={handleSubmitForSave}
             setChosenModuleData={setChosenModuleData}
-            handleSubmitForDelete={handleSubmitForDelete}/>
+            handleSubmitForDelete={handleSubmitForDelete}
+            handleSubmitForNewModule={handleSubmitForNewModule}
+            showButtonModuleManipulator={showButtonModuleManipulator}
+            handleSubmitSaveNewModule={handleSubmitSaveNewModule}/>
         }
       </div>
     </div>
