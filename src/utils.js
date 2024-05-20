@@ -25,7 +25,7 @@ export const getModuleIndex = (chosenModul, chosenDegree) => {
 
 export const putRequest = async(index, updatedModule, path) => {
     const responsePost = await fetch(`http://127.0.0.1:5000/${path}?id=${index}`,{
-        method: 'Post',
+        method: 'Put',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(updatedModule)
     });
